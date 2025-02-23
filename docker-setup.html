@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Setup - Docker Compose</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .code-block {
+            position: relative;
+            background: #2d2d2d;
+            color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .copy-btn:hover {
+            background: #5a6268;
+        }
+        .important-note {
+            background-color: #e2e3e5;
+            color: #495057;
+            border-left: 5px solid #6c757d;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #6c757d;
+            text-align: center;
+            font-size: 14px;
+            color: #495057;
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+        p, ul {
+            margin-bottom: 20px;
+        }
+        a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">🚀 Project Setup with Docker Compose</h1>
+
+    <h2>🔥 Start the Application</h2>
+    <p>Run the following command to build and start the services in detached mode:</p>
+    <div class="code-block">
+        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+        <code>docker-compose up --build -d</code>
+    </div>
+
+    <div class="important-note">
+        ❗ <strong>IMPORTANT:</strong> After running the command, <span class="fw-bold">please wait</span> for the containers to finish installing dependencies. This process <span class="fw-bold">may take a few minutes</span>, depending on your system and network speed.  
+        <br><br>
+        📜 <strong>You can see the container logs to track the installation progress:</strong>
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <code>docker logs -f backend</code>
+        </div>
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+            <code>docker logs -f frontend</code>
+        </div>
+    </div>
+
+    <h2>🔗 Access the Applications</h2>
+    <p><strong>Backend (Server)</strong> - Port 8000: <a href="http://localhost:8000" target="_blank">http://localhost:8000</a></p>
+    <p><strong>Frontend (Client)</strong> - Port 3000: <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></p>
+
+    <h2>📡 Fetch More Data from News APIs</h2>
+    <p>Run the following command to fetch the latest news articles:</p>
+    <div class="code-block">
+        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+        <code>docker-compose run backend php artisan news:fetch</code>
+    </div>
+
+    <div class="footer">
+        <p><strong>💡 Author:</strong> This home challenge was implemented by <a href="https://www.linkedin.com/in/ali-azmoude/" target="_blank">Ali Azmoude</a> on 02/23/2025.</p>
+    </div>
+</div>
+
+<script>
+    function copyToClipboard(button) {
+        var codeBlock = button.nextElementSibling;
+        var textArea = document.createElement("textarea");
+        textArea.value = codeBlock.innerText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        button.innerText = "Copied!";
+        setTimeout(() => { button.innerText = "Copy"; }, 2000);
+    }
+</script>
+
+</body>
+</html>
